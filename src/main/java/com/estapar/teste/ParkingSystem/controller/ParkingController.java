@@ -1,5 +1,7 @@
 package com.estapar.teste.ParkingSystem.controller;
 
+import com.estapar.teste.ParkingSystem.service.EventHandlerService;
+import com.estapar.teste.ParkingSystem.service.FetcherService;
 import com.estapar.teste.ParkingSystem.service.ParkingService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +20,14 @@ import java.util.Map;
 public class ParkingController {
 
     private final ParkingService parkingService;
+    private final EventHandlerService eventHandlerService;
 
     private static final Logger logger = LoggerFactory.getLogger(ParkingController.class);
 
     @PostMapping("/webhook")
     public ResponseEntity<String> handleWebhookEvent(@RequestBody JsonNode event) {
         try {
-            ResponseEntity<String> response = parkingService.handleWebhookEvent(event);
+            ResponseEntity<String> response = eventHandlerService.handleWebhookEvent(event);
             logger.info("Webhook event handled successfully. Event type: {}", event.get("event_type").asText());
             return response;
         } catch (DateTimeParseException e) {

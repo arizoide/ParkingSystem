@@ -26,6 +26,8 @@ API REST: Expõe um endpoint GET /revenue para consultar a receita total de um s
 
 **Melhorias a Serem Aplicadas em um Segundo Momento**
 
+Melhorar a distribuição dos métodos aplicando alguns conceitos do SOLID
+
 
 
 O projeto atual é funcional, mas diversas melhorias podem ser implementadas para torná-lo mais robusto, escalável e resiliente.
